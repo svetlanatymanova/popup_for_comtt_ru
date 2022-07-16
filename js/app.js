@@ -1,19 +1,5 @@
 (() => {
     "use strict";
-    const modules_flsModules = {};
-    function isWebp() {
-        function testWebP(callback) {
-            let webP = new Image;
-            webP.onload = webP.onerror = function() {
-                callback(2 == webP.height);
-            };
-            webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
-        }
-        testWebP((function(support) {
-            let className = true === support ? "webp" : "no-webp";
-            document.documentElement.classList.add(className);
-        }));
-    }
     let bodyLockStatus = true;
     let bodyUnlock = (delay = 500) => {
         let body = document.querySelector("body");
@@ -49,11 +35,7 @@
             }), delay);
         }
     };
-    function functions_FLS(message) {
-        setTimeout((() => {
-            if (window.FLS) console.log(message);
-        }), 0);
-    }
+    const Modules = {};
     class Popup {
         constructor(options) {
             let config = {
@@ -294,20 +276,7 @@
             const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
             if (!this.isOpen && this.lastFocusEl) this.lastFocusEl.focus(); else focusable[0].focus();
         }
-        popupLogging(message) {
-            this.options.logging ? functions_FLS(`[Попапос]: ${message}`) : null;
-        }
+        popupLogging(message) {}
     }
-    modules_flsModules.popup = new Popup({});
-    let addWindowScrollEvent = false;
-    setTimeout((() => {
-        if (addWindowScrollEvent) {
-            let windowScroll = new Event("windowScroll");
-            window.addEventListener("scroll", (function(e) {
-                document.dispatchEvent(windowScroll);
-            }));
-        }
-    }), 0);
-    window["FLS"] = true;
-    isWebp();
+    Modules.popup = new Popup({});
 })();

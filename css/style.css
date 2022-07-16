@@ -1,6 +1,28 @@
+@charset "UTF-8";
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:700&display=swap);
 
-@charset "UTF-8";
+
+@font-face {
+  font-family: "Segoe UI";
+  font-display: swap;
+  src: url("../fonts/SegoeUIBold.woff2") format("woff2"), url("../fonts/SegoeUIBold.woff") format("woff");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Segoe UI";
+  font-display: swap;
+  src: url("../fonts/SegoeUIRegular.woff2") format("woff2"), url("../fonts/SegoeUIRegular.woff") format("woff");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Segoe UI";
+  font-display: swap;
+  src: url("../fonts/SegoeUISemiBold.woff2") format("woff2"), url("../fonts/SegoeUISemiBold.woff") format("woff");
+  font-weight: 600;
+}
 
 * {
   padding: 0px;
@@ -440,75 +462,6 @@ body::after {
   color: #494949;
 }
 
-[class*=-ibg] {
-  position: relative;
-}
-
-[class*=-ibg] img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-[class*=-ibg_contain] img {
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
-/*
-.icon-menu {
-	display: none;
-	@media (max-width: $mobile) {
-		display: block;
-		position: relative;
-		width: rem(30);
-		height: rem(18);
-		cursor: pointer;
-		z-index: 5;
-		span,
-		&::before,
-		&::after {
-			content: "";
-			transition: all 0.3s ease 0s;
-			right: 0;
-			position: absolute;
-			width: 100%;
-			height: rem(2);
-			background-color: #000;
-		}
-		&::before {
-			top: 0;
-		}
-		&::after {
-			bottom: 0;
-		}
-		span {
-			top: calc(50% - rem(1));
-		}
-		.menu-open & {
-			span {
-				width: 0;
-			}
-			&::before,
-			&::after {
-			}
-			&::before {
-				top: calc(50% - rem(1));
-				transform: rotate(-45deg);
-			}
-			&::after {
-				bottom: calc(50% - rem(1));
-				transform: rotate(45deg);
-			}
-		}
-	}
-}
-*/
-
 @media (min-width: 479.98px) {
   .item__name > .item__available {
     display: none;
@@ -599,7 +552,7 @@ body::after {
   .item__available::after {
     position: absolute;
     left: -10px;
-    top: 5px;
+    top: 0.35em;
   }
 }
 
