@@ -1,7 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap);
+
 @charset "UTF-8";
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:700&display=swap);
-
 
 @font-face {
   font-family: "Segoe UI";
@@ -215,6 +214,7 @@ body::after {
 }
 
 .popup__content {
+  position: relative;
   visibility: hidden;
   -webkit-transform: scale(0);
       -ms-transform: scale(0);
@@ -225,7 +225,7 @@ body::after {
   transition: transform 0.3s ease 0s;
   transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
   background-color: #ffffff;
-  padding: 30px;
+  padding: 1.875em;
   width: 100%;
   max-width: 740px;
   border-radius: 5px;
@@ -235,17 +235,30 @@ body::after {
   visibility: visible;
 }
 
+@supports (font-size: clamp( 0.75rem , 0.7rem  +  0.25vw , 1rem )) {
+  .popup {
+    font-size: clamp( 0.75rem , 0.7rem  +  0.25vw , 1rem );
+  }
+}
+
+@supports not (font-size: clamp( 0.75rem , 0.7rem  +  0.25vw , 1rem )) {
+  .popup {
+    font-size: calc(
+			0.75rem + 0.25 * (100vw - 20rem) / 100
+		);
+  }
+}
+
 .popup__head {
-  background: #eef2f9;
-  padding-top: 18px;
-  padding-bottom: 24px;
+  padding-top: 1.125em;
+  padding-bottom: 1.5em;
 }
 
 .popup__title {
   font-family: "Segoe UI";
   font-weight: 700;
-  font-size: 1.9em;
-  line-height: 2.5em;
+  font-size: 1.7em;
+  line-height: 1.5em;
   text-align: center;
   color: #000000;
 }
@@ -276,46 +289,95 @@ body::after {
   border-radius: 4px;
   padding: 0.8em 0;
   font-family: "Roboto";
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1em;
-  line-height: 131%;
   text-align: center;
   color: #ffffff;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 2%;
 }
 
 .popup__button-orange {
-  background: #fc7f3c;
+  background: #f5f7fb;
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  color: #323c47;
+}
+
+.popup__button-orange svg {
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  fill: #fc7f3c;
+  width: 1.4em;
+  height: 1.2em;
 }
 
 .popup__button-orange:hover {
   background: #ff9861;
+  color: #ffffff;
+}
+
+.popup__button-orange:hover svg {
+  fill: #ffffff;
 }
 
 .popup__button-blue {
-  background: #2b4c98;
+  background: #4062af;
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  font-weight: 500;
 }
 
 .popup__button-blue:hover {
   background: #6480bf;
 }
 
-.popup__arrow {
-  cursor: pointer;
-  display: block;
-  width: 15px;
-  height: 15px;
-  border-top: 2px solid #58667b;
-  border-right: 2px solid #58667b;
-  margin: 2rem auto 0 auto;
-  -webkit-transform: rotate(135deg);
-      -ms-transform: rotate(135deg);
-          transform: rotate(135deg);
+.popup__close {
+  position: absolute;
+  top: 1.8125em;
+  right: 2.4375em;
+  z-index: 50;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.popup__close::after,
+.popup__close::before {
+  content: "";
+  position: absolute;
+  width: 1.125em;
+  height: 2px;
+  background: #5f698a;
+  border-radius: 5px;
+}
+
+.popup__close::before {
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.popup__close::after {
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.popup__close:hover::after,
+.popup__close:hover::before {
+  background: #4062af;
 }
 
 .main-popup {
@@ -325,13 +387,14 @@ body::after {
 .main-popup__title {
   font-family: "Segoe UI";
   font-weight: 700;
-  font-size: 1.3em;
+  font-size: 1.2em;
   line-height: 152%;
   text-align: center;
   color: #000000;
 }
 
 .main-popup__column {
+  margin-top: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -339,7 +402,7 @@ body::after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 380px;
+  height: 19.375em;
   overflow: auto;
 }
 
@@ -358,12 +421,14 @@ body::after {
   display: -ms-flexbox;
   display: flex;
   gap: 2%;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 100%;
   padding: 0.25em 0.9em 0.25em 0.25em;
   background-color: #ffffff;
+}
+
+.item-big {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .item:hover {
@@ -372,12 +437,16 @@ body::after {
 
 .item__img {
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
   position: relative;
   width: 36px;
   height: 36px;
-  max-height: 36px;
+}
+
+.item__img-big {
+  width: 5em;
+  height: 5em;
 }
 
 .item__img img {
@@ -392,9 +461,6 @@ body::after {
 
 .item__name {
   margin-top: 6px;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 70%;
-          flex: 0 1 70%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -402,6 +468,10 @@ body::after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.item__name-big {
+  gap: 0.3125em;
 }
 
 .item__title {
@@ -414,29 +484,29 @@ body::after {
 
 .item__count {
   margin-top: 6px;
+  color: #5f698a;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 10%;
-          flex: 0 0 10%;
+      -ms-flex: 0 0 18%;
+          flex: 0 0 18%;
   font-family: "Segoe UI";
   text-align: center;
   font-weight: 400;
   font-size: 1em;
   line-height: 1.2em;
-  color: #000000;
   white-space: nowrap;
 }
 
 .item__available {
   text-align: right;
   margin-top: 6px;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 25%;
-          flex: 0 0 25%;
   font-family: "Segoe UI";
   font-weight: 400;
   font-size: 1em;
   color: #000000;
   white-space: nowrap;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 18%;
+          flex: 0 0 18%;
 }
 
 .item__available::after {
@@ -458,14 +528,50 @@ body::after {
   font-weight: 400;
   font-size: 0.9em;
   line-height: 1.15em;
-  text-align: justify;
   color: #494949;
 }
 
-@media (min-width: 479.98px) {
-  .item__name > .item__available {
-    display: none;
-  }
+.item__cost {
+  white-space: nowrap;
+  font-family: "Segoe UI";
+  font-weight: 700;
+  line-height: 1.2em;
+  font-size: 1em;
+  text-align: right;
+  color: #323c47;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 18%;
+          flex: 0 0 18%;
+}
+
+.item__cost::after {
+  content: " ₽";
+}
+
+.item__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 60%;
+          flex: 1 1 60%;
+  gap: 0.4375em;
+}
+
+.item__content-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.875em;
+}
+
+.item__model {
+  font-family: "Segoe UI";
+  font-weight: 600;
+  line-height: 1.2em;
+  font-size: 1em;
+  white-space: nowrap;
+  color: #666e79;
 }
 
 @media (max-width: 991.98px) {
@@ -513,8 +619,7 @@ body::after {
   }
 
   .popup__content {
-    max-width: 100%;
-    padding: 15px;
+    max-width: 400px;
   }
 
   .popup__buttons {
@@ -525,12 +630,13 @@ body::after {
     gap: 10px;
   }
 
-  .main-popup__title {
-    text-align: left;
+  .popup__close::after,
+  .popup__close::before {
+    height: 1px;
   }
 
-  .item > .item__available {
-    display: none;
+  .main-popup__title {
+    text-align: left;
   }
 
   .item__name {
@@ -538,10 +644,15 @@ body::after {
   }
 
   .item__count {
-    margin-top: 0px;
+    color: #000000;
+  }
+
+  .item__count-big {
+    display: none;
   }
 
   .item__available {
+    display: none;
     text-align: left;
     position: relative;
     top: 0;
@@ -554,10 +665,36 @@ body::after {
     left: -10px;
     top: 0.35em;
   }
+
+  .item__cost {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .popup__content {
+    max-width: 360px;
+  }
 }
 
 @media (max-width: 375px) {
   .popup__head {
     font-size: 13px;
+  }
+}
+
+@media (max-width: 370px) {
+  .popup__content {
+    max-width: 320px;
+  }
+
+  .popup__title {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 340px) {
+  .popup__content {
+    max-width: 300px;
   }
 }
