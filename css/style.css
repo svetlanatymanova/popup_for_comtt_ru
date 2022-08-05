@@ -425,14 +425,18 @@ body::after {
   background-color: #ffffff;
 }
 
+.item:hover {
+  background-color: #eef2f9;
+}
+
 .item-big {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.item:hover {
-  background-color: #eef2f9;
+.item-big:hover {
+  background-color: #ffffff;
 }
 
 .item__img {
@@ -487,14 +491,18 @@ body::after {
   margin-top: 6px;
   color: #5f698a;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 18%;
-          flex: 0 0 18%;
+      -ms-flex: 0 0 5%;
+          flex: 0 0 5%;
   font-family: "Segoe UI";
   text-align: center;
   font-weight: 400;
   font-size: 1em;
   line-height: 1.2em;
   white-space: nowrap;
+}
+
+.item__count-big {
+  margin-top: 0;
 }
 
 .item__available {
@@ -506,8 +514,8 @@ body::after {
   color: #000000;
   white-space: nowrap;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 18%;
-          flex: 0 0 18%;
+      -ms-flex: 0 0 5%;
+          flex: 0 0 5%;
 }
 
 .item__available::after {
@@ -541,8 +549,8 @@ body::after {
   text-align: right;
   color: #323c47;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 18%;
-          flex: 0 0 18%;
+      -ms-flex: 0 0 5%;
+          flex: 0 0 5%;
 }
 
 .item__cost::after {
@@ -554,8 +562,8 @@ body::after {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 60%;
-          flex: 1 1 60%;
+      -ms-flex: 1 1 86%;
+          flex: 1 1 86%;
   gap: 0.4375em;
 }
 
