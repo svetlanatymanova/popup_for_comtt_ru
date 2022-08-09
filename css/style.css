@@ -150,9 +150,6 @@ body::after {
   top: 0;
   left: 0;
   opacity: 0;
-  -webkit-transition: opacity 0.8s ease 0s;
-  -o-transition: opacity 0.8s ease 0s;
-  transition: opacity 0.8s ease 0s;
   pointer-events: none;
   z-index: 149;
 }
@@ -168,9 +165,6 @@ body::after {
   bottom: 0;
   right: 0;
   padding: 30px 10px;
-  -webkit-transition: visibility 0.8s ease 0s;
-  -o-transition: visibility 0.8s ease 0s;
-  transition: visibility 0.8s ease 0s;
   visibility: hidden;
   pointer-events: none;
   font-size: 16px;
@@ -219,11 +213,6 @@ body::after {
   -webkit-transform: scale(0);
       -ms-transform: scale(0);
           transform: scale(0);
-  -webkit-transition: -webkit-transform 0.3s ease 0s;
-  transition: -webkit-transform 0.3s ease 0s;
-  -o-transition: transform 0.3s ease 0s;
-  transition: transform 0.3s ease 0s;
-  transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
   background-color: #ffffff;
   padding: 1.875em;
   width: 100%;
@@ -345,39 +334,32 @@ body::after {
 
 .popup__close {
   position: absolute;
-  top: 1.8125em;
-  right: 2.4375em;
+  top: 2.1875em;
+  right: 2.1875em;
   z-index: 50;
+  font-weight: 600;
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  width: auto;
+  height: auto;
+  border-radius: 50%;
 }
 
-.popup__close::after,
 .popup__close::before {
-  content: "";
   position: absolute;
-  width: 1.125em;
-  height: 2px;
-  background: #5f698a;
-  border-radius: 5px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  content: "×";
+  font-size: 2.8125em;
+  color: #5f698a;
 }
 
-.popup__close::before {
-  -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-          transform: rotate(45deg);
-}
-
-.popup__close::after {
-  -webkit-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-}
-
-.popup__close:hover::after,
 .popup__close:hover::before {
-  background: #4062af;
+  color: #4062af;
 }
 
 .main-popup {
@@ -637,11 +619,6 @@ body::after {
         -ms-flex-direction: column;
             flex-direction: column;
     gap: 10px;
-  }
-
-  .popup__close::after,
-  .popup__close::before {
-    height: 1px;
   }
 
   .main-popup__title {
